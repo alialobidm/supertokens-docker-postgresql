@@ -10,11 +10,11 @@ ENV SUPERTOKENS_PORT=$PORT
 
 # Static config vars
 # ARG DISABLE_TELEMETRY
-ARG DISABLE_TELEMETRY=true
+# ARG DISABLE_TELEMETRY=true
 # This is the default of 100 days (in minutes), just making it explicit
-ARG REFRESH_TOKEN_VALIDITY=144000
+# ARG REFRESH_TOKEN_VALIDITY=144000
 # 12 hours between refreshes (in seconds)
-ARG ACCESS_TOKEN_VALIDITY=43200
+# ARG ACCESS_TOKEN_VALIDITY=43200
 
 ENV MAX_SERVER_POOL_SIZE=25
 ENV POSTGRESQL_CONNECTION_POOL_SIZE=20
@@ -53,6 +53,13 @@ RUN set -x \
 COPY --from=tmp --chown=supertokens /usr/lib/supertokens /usr/lib/supertokens
 COPY --from=tmp --chown=supertokens /usr/bin/supertokens /usr/bin/supertokens
 COPY docker-entrypoint.sh /usr/local/bin/
+
+ENV DISABLE_TELEMETRY=true
+# This is the default of 100 days (in minutes), just making it explicit
+ENV REFRESH_TOKEN_VALIDITY=144000
+# 12 hours between refreshes (in seconds)
+ENV ACCESS_TOKEN_VALIDITY=43200
+
 RUN echo "$(md5sum /usr/lib/supertokens/config.yaml | awk '{ print $1 }')" >> /CONFIG_HASH
 RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
 ENTRYPOINT ["docker-entrypoint.sh"]
