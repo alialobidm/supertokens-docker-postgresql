@@ -12,12 +12,11 @@ ENV SUPERTOKENS_PORT=$PORT
 ENV DISABLE_TELEMETRY=true
 # This is the default of 100 days (in minutes), just making it explicit
 ENV REFRESH_TOKEN_VALIDITY=144000
-# 6 hours between refreshes (in seconds)
-ENV ACCESS_TOKEN_VALIDITY=21600
+# 12 hours between refreshes (in seconds)
+ENV ACCESS_TOKEN_VALIDITY=43200
 
 ENV MAX_SERVER_POOL_SIZE=25
 ENV POSTGRESQL_CONNECTION_POOL_SIZE=20
-
 
 ARG PLUGIN_NAME=postgresql
 ARG PLAN_TYPE=FREE
