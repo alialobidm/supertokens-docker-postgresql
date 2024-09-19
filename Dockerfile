@@ -10,8 +10,8 @@ ENV SUPERTOKENS_PORT=$PORT
 
 ARG PLUGIN_NAME=postgresql
 ARG PLAN_TYPE=FREE
-ARG CORE_VERSION=6.0.11
-ARG PLUGIN_VERSION=4.0.2
+ARG CORE_VERSION=6.0.19
+ARG PLUGIN_VERSION=4.0.5
 RUN apt-get update && apt-get install -y curl zip
 RUN OS= && dpkgArch="$(dpkg --print-architecture)" && \
 	case "${dpkgArch##*-}" in \
