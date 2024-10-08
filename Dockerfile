@@ -50,8 +50,8 @@ ENV REFRESH_TOKEN_VALIDITY=144000
 # 12 hours between refreshes (in seconds)
 ENV ACCESS_TOKEN_VALIDITY=43200
 
-ENV MAX_SERVER_POOL_SIZE=40
-ENV POSTGRESQL_CONNECTION_POOL_SIZE=25
+ENV MAX_SERVER_POOL_SIZE=25
+ENV POSTGRESQL_CONNECTION_POOL_SIZE=10
 
 RUN echo "$(md5sum /usr/lib/supertokens/config.yaml | awk '{ print $1 }')" >> /CONFIG_HASH
 RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
